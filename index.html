@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title> Portfolio </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="styles.css">
+        <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    </head>
+    <body>
+
+	<style>
+		img {
+			border-radius: 100%;
+		}
+	</style>
+
+	
+	/*...............................................................................*/
+	<style>
+		/* Styles for the image slider */
+		.slider {
+			position: relative;
+			width: 100%;
+			max-width: 600px;
+			margin: 0 auto;
+			overflow: hidden;
+		}
+
+		.slider__container {
+			display: flex;
+			transition: transform 0.5s ease-in-out;
+		}
+
+		.slider__item {
+			flex: 0 0 100%;
+			width: 100%;
+		}
+
+		.fade_animation {
+			opacity: 0;
+		}
+
+	</style>
+
+	<script>
+		// Image slider functionality
+		document.addEventListener('DOMContentLoaded', function () {
+			const sliderContainer = document.querySelector('.slider__container');
+			const sliderItems = document.querySelectorAll('.slider__item');
+			const prevButton = document.querySelector('.slider__prev');
+			const nextButton = document.querySelector('.slider__next');
+			const slideWidth = sliderItems[0].offsetWidth;
+			let currentIndex = 0;
+
+			// Function to navigate to the previous slide
+			function goToPrevSlide() {
+				currentIndex--;
+				if (currentIndex < 0) {
+					currentIndex = sliderItems.length - 1;
+				}
+				sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+			}
+
+			// Function to navigate to the next slide
+			function goToNextSlide() {
+				currentIndex++;
+				if (currentIndex >= sliderItems.length) {
+					currentIndex = 0;
+				}
+				sliderContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+			}
+
+			// Event listeners for previous and next buttons
+			prevButton.addEventListener('click', goToPrevSlide);
+			nextButton.addEventListener('click', goToNextSlide);
+
+			document.getElementById("fadeOutButton").addEventListener("click", function () {
+				var headings = document.getElementsByClassName("fade_animation");
+				var interval = 200; // Time interval between each fade (in milliseconds)
+				var index = headings.length - 1;
+
+				function fadeOut() {
+					if (index >= 0) {
+						var heading = headings[index];
+						heading.style.transition = "opacity 0.5s";
+						heading.style.opacity = "0";
+						index--;
+						setTimeout(fadeOut, interval);
+					} else {
+						var more_writer_div = document.getElementById('more_writer_div');
+						more_writer_div.style.display = "none";
+						var content_div = document.getElementById('content');
+						content_div.style.display = "block";
+						var show_more_bt = document.getElementById('fadeInButton');
+						show_more_bt.style.display = "block";
+						var show_less_bt = document.getElementById('fadeOutButton');
+						show_less_bt.style.display = "none";
+					}
+				}
+
+				fadeOut();				
+			});
+
+			document.getElementById("fadeInButton").addEventListener("click", function () {
+				var more_writer_div = document.getElementById('more_writer_div');
+				more_writer_div.style.display = "block";
+				var content_div = document.getElementById('content');
+				content_div.style.display = "none";
+				var show_more_bt = document.getElementById('fadeInButton');
+				show_more_bt.style.display = "none";
+				var show_less_bt = document.getElementById('fadeOutButton');
+				show_less_bt.style.display = "block";
+				var headings = document.getElementsByClassName("fade_animation");
+				var interval = 200; // Time interval between each fade (in milliseconds)
+				var index = headings.length - 1;
+				var index = 0;
+
+
+				function fadeIn() {
+					if (index < headings.length) {
+						var heading = headings[index];
+						heading.style.transition = "opacity 0.5s";
+						heading.style.opacity = "1";
+						index++;
+						setTimeout(fadeIn, interval);
+					}
+				}
+
+				fadeIn();
+			});
+		});
+	</script>
+
+
+/*.....................................................................................*/
+	<style>
+		/* Styles for hover effects */
+		.skills__subtitle {
+			transition: color 0.3s ease;
+		}
+
+		.skills__subtitle:hover {
+			color: yellowgreen;
+			font-size: 50px;
+		}
+	</style>
+
+	<script>
+		// JavaScript event handling for hover effects on skills subtitle
+		document.addEventListener('DOMContentLoaded', function () {
+			const skillsSubtitle = document.querySelector('.skills__subtitle');
+
+			// Function to apply hover effect on subtitle
+			function applyHoverEffect() {
+				this.style.color = 'darkgreen';
+				this.style.fontSize = '30px';
+			}
+
+			// Function to remove hover effect from skills subtitle
+			function removeHoverEffect() {
+				this.style.color = '';
+				this.style.fontSize = '';
+			}
+
+			// Event listeners for hover effects on skills subtitle
+			skillsSubtitle.addEventListener('mouseenter', applyHoverEffect);
+			skillsSubtitle.addEventListener('mouseleave', removeHoverEffect);
+		});
+	</script>
+
+	<script>
+		// Smooth scrolling function
+		function smoothScroll(target) {
+			const element = document.querySelector(target);
+			const offset = 80; // Adjust this value to offset the scroll position if you have a fixed header or other elements
+
+			if (element) {
+				window.scrollTo({
+					top: element.offsetTop - offset,
+					behavior: 'smooth'
+				});
+			}
+		}
+	</script>
+
+
+	/*.....................................................................*/
+	//animations for image
+
+	
+</head>
+
+<body>
+	<!-- HEADER -->
+	
+
+	<header class="l-header">
+            <nav class="nav bd-grid">
+
+				
+			
+                <div>
+                    <img src="./img/logo.jpg" alt="logo" width="75" height="8">
+
+                </div>
+
+                <div class="nav__menu" id="nav-menu" >
+                    <ul class="nav__list">
+					<li class="nav__item"><a href="#home" class="nav__link" onclick="smoothScroll('#home')">Home</a>
+					</li>
+					<li class="nav__item"><a href="#about" class="nav__link" onclick="smoothScroll('#about')">About</a>
+					</li>
+					<li class="nav__item"><a href="#skills" class="nav__link"
+							onclick="smoothScroll('#skills')">Skills</a></li>
+					<li class="nav__item"><a href="#creations" class="nav__link"
+							onclick="smoothScroll('#creations')">Creations</a></li>
+					<li class="nav__item"><a href="#contact" class="nav__link"
+							onclick="smoothScroll('#contact')">Contact</a></li>
+				</ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+
+
+</body>
+
+</html>
+
+
+<main class="l-main">
+
+	<!--===== HOME =====-->
+
+	<section class="home bd-grid" id="home">
+
+		<div class="home__data"data-aos="fade-down">
+			<h1 class="home__title"><br>Hello,<br>I'am a learner <span class="home__title-color">Looking to join hand
+					with
+					writers!!!!!!!!</span><br> Writing as a....<br> PASSION</h1>
+		</div>
+
+		<div class="home__social">
+
+			<a href="" class="home__social-icon"data-aos="fade-down"><i class='bx bxl-linkedin'></i></a>
+			<a href="" class="home__social-icon"data-aos="fade-down"
+                      data-aos-delay="250"><i class='bx bxl-behance'></i></a>
+			<a href="" class="home__social-icon"><i class='bx bxl-github'></i></a>
+			<a href="" class="home__social-icon"data-aos="fade-down"
+                      data-aos-delay="250"><i class='bx bxl-instagram'></i></a>
+			<a href="" class="home__social-icon"><i class='bx bxl-facebook'></i></a>
+		</div>
+
+		<div  class="home__img">
+			<img src="img/profile.jpg" alt="" width="400" height="10">
+		</div>
+	</section>
+
+	<!--section class="home bd-grid" id="home">
+                <div class="home_data" data-aos="fade-down">
+                    <h1 class="home__title"><br>Hello,<br>I'am a learner <span class="home__title-color">Looking to join hand
+					with
+					writers!!!!!!!!</span><br> Writing as a....<br> PASSION</h1>
+
+                    
+                   
+                         
+                
+
+
+	<!--===== ABOUT ===== -->
+	<section class="about section " id="about">
+
+		<h2 class="section-title"data-aos="fade-down">About</h2>
+
+		<div class="about__container bd-grid">
+			<div class="about__img">
+				<img src="img/about.jpg" alt=""data-aos="fade-down">
+				<h3>More writer works</h3>
+				<div id="content"> See more student works</div>
+				<div id="more_writer_div" style="display: none;">
+					<h2 class="fade_animation">Jabari Asim</h2>
+					<p class="fade_animation">
+						1.The sky is blue<br>
+						2.Whose Toes Are Those?
+					</p>
+					<h2 class="fade_animation">Sandra Boynton</h2>
+					<p class="fade_animation">
+						1.But Not the Hippopotamus<br>
+						2.Blue Hat, Green Hat
+					</p>
+					<h2 class="fade_animation">Donald Crews</h2>
+					<p class="fade_animation">
+						1.Freight Train<br>
+						2.Truck
+					</p>
+					<h2 class="fade_animation">Lois Ehlert</h2>
+					<p class="fade_animation">
+						1.Color Zoo<br>
+						2.Fish Eyes: A Book You Can Count On
+					</p>
+				</div>
+				<button id="fadeInButton">Show more</button>
+				<button id="fadeOutButton" style="display: none;">Show less</button>
+			</div>
+
+
+			<div>
+				<h2 class="skills__subtitle" class="about__subtitle" style="font-size:35px">I am a student looking
+					forward for
+					inspirational writers</h2>
+
+				<p class="about__text" style="font-size:25px">This is created to join hands of <b>writers</b> all around
+					the
+					world.
+					Young enthusisastic writers are <b>WELCOME</b>. Everyone can join the community.Inspirational
+					writers who are
+					capable of graphic designing are mostly welcome. This is an open opportunity for all the writers out
+					there!!!!!!!</p>
+
+			</div>
+
+		</div>
+	</section>
+
+	<!--===== skills =====-->
+
+	<section class="skills section" id="skills">
+		<h2 class="section-title" data-aos="fade-down">Skills</h2>
+
+		<div class="skills__container bd-grid">
+
+
+			<div>
+				<h2 class="skills__subtitle" style="font-size: 40px">Skills expected!!!! or skills to be developed!!!
+				</h2>
+				<div>
+					<br><br>
+
+					<ul class="skills__subtitle" style="font-size: 25px" data-aos="fade-right">
+						<li>Content writing</li>
+						<li>Reading</li>
+						<li>Organizing</li>
+						<li>Creativity</li>
+						<li>A good collection of words</li>
+					</ul>
+
+
+					<img  src="img/skills.jpg" alt="" class="skills__img"
+						style="vertical-align: right;margin: 0px 500px" width="600"data-aos="fade-left">
+
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+
+
+
+	<!--===== creations =====-->
+	<section class="creations section" id="creations">
+		<h2 class="section-title">Creations</h2>
+
+		<div class="slider">
+			<div class="slider__container">
+				<div class="slider__item">
+					<img src="img/1.jpg" alt="" width="100%" height="100%">
+				</div>
+				<div class="slider__item">
+					<img src="img/2.jpg" alt="" width="100%" height="100%">
+				</div>
+				<div class="slider__item">
+					<img src="img/3.jpg" alt="" width="100%" height="100%">
+				</div>
+				<div class="slider__item">
+					<img src="img/4.jpg" alt="" width="100%" height="100%">
+				</div>
+				<div class="slider__item">
+					<img src="img/5.jpg" alt="" width="100%" height="100%">
+				</div>
+				<div class="slider__item">
+					<img src="img/6.jpg" alt="" width="100%" height="100%">
+				</div>
+			</div>
+			<button class="slider__prev">&#10094;</button>
+			<button class="slider__next">&#10095;</button>
+		</div>
+	</section>
+
+
+
+
+
+	</section>
+
+	<!--===== CONTACT =====-->
+
+	<style>
+		/* Form Styles */
+		.contact__container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.content {
+			text-align: center;
+			max-width: 400px;
+			margin: 0 auto;
+		}
+
+		.form-group {
+			margin-bottom: 20px;
+		}
+
+		label {
+			display: block;
+			font-size: 18px;
+			margin-bottom: 5px;
+		}
+
+		input[type="text"],
+		input[type="email"],
+		input[type="tel"] {
+			width: 100%;
+			padding: 10px;
+			font-size: 16px;
+			border: 1px solid #ccc;
+			border-radius: 4px;
+		}
+
+		button[type="submit"] {
+			background-color: darkblue;
+			color: white;
+			padding: 10px 20px;
+			font-size: 16px;
+			border: none;
+			border-radius: 4px;
+			cursor: pointer;
+		}
+
+		button[type="submit"]:hover {
+			background-color: darkblue;
+		}
+
+		/* Validation Styles */
+		input:invalid {
+			border-color: black;
+		}
+
+		input:valid {
+			border-color: black;
+		}
+
+		.alert {
+			color: #ff0000;
+			font-size: 14px;
+			margin-top: 5px;
+		}
+	</style>
+	<section class="contact section" id="contact">
+		<h2 class="section-title" data-aos="fade-down">Contact</h2>
+
+		<div class="contact__container bd-grid">
+			<div class="content">
+				<p class="skills__subtitle" class="center contact-detail" style="font-size:160%;"><b>Those who are
+						willing to
+						join my Community </b></p>
+				<form id="contactForm" onsubmit="validateForm(event)">
+					<div class="form-group">
+						<label class="skills__subtitle" for="name">Name:</label>
+						<input type="text" id="name" name="name" required>
+					</div>
+					<div class="form-group">
+						<label class="skills__subtitle" for="email">Email:</label>
+						<input type="email" id="email" name="email" required>
+					</div>
+					<div class="form-group">
+						<label class="skills__subtitle" for="phoneNumber">Phone Number:</label>
+						<input type="tel" id="phoneNumber" name="phoneNumber" required>
+					</div>
+					<button class="skills__subtitle" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</section>
+	<script>
+		function validateForm(event) {
+			event.preventDefault(); // Prevent the form from submitting
+
+			// Get the form element
+			var form = document.getElementById("contactForm");
+
+			// Get the values of the form fields
+			var name = form.elements["name"].value;
+			var email = form.elements["email"].value;
+			var phoneNumber = form.elements["phoneNumber"].value;
+
+			// Perform validation checks on the form fields
+			if (name.trim() === "") {
+				alert("Please enter your name.");
+				return;
+			}
+
+			if (email.trim() === "") {
+				alert("Please enter your email address.");
+				return;
+			}
+
+			if (!validateEmail(email)) {
+				alert("Please enter a valid email address.");
+				return;
+			}
+
+			if (phoneNumber.trim() === "") {
+				alert("Please enter your phone number.");
+				return;
+			}
+
+			if (!validatePhoneNumber(phoneNumber)) {
+				alert("Please enter a valid phone number.");
+				return;
+			}
+
+			// If all validations pass, you can proceed with submitting the form
+			form.submit();
+		}
+
+		function validateEmail(email) {
+			// Regular expression pattern for email validation
+			var emailPattern = /^[\w-]+(\.[\w-]+)*@([\w-]+\.)+[a-zA-Z]{2,7}$/;
+
+			return emailPattern.test(email);
+		}
+
+		function validatePhoneNumber(phoneNumber) {
+			// Regular expression pattern for phone number validation
+			var phonePattern = /^\d{10}$/; // Assumes 10-digit phone numbers
+
+			return phonePattern.test(phoneNumber);
+		}
+
+	</script>
+
+
+
+
+	</address>
+	</div>
+	</div>
+	</section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer">
+	<p class="footer_title">Journal Writer</p>
+	<div class="footer__social">
+		<a href="https://www.facebook.com/manalmurshid99" target="_blank" class="footer__icon"><i
+				class='bx bxl-facebook'></i></a>
+		<a href="https://www.instagram.com/ManalMurshid" target="_blank" class="footer__icon"><i
+				class='bx bxl-instagram'></i></a>
+		<a href="https://www.twitter.com/ManalMurshid" target="_blank" class="footer__icon"><i
+				class='bx bxl-twitter'></i></a>
+		<a href="https://www.linkedin.com/manalmurshid99" target="_blank" class="footer__icon"><i
+				class='bx bxl-linkedin'></i></a>
+
+	</div>
+	<address>
+		<p>Email Me: <a href="manalmurshdi99@gmail.com">manalmurshid99@gmail.com</a></p>
+		<p></p>Call Me: <a href="tel:+94352245675">+94352245675</a></p>
+		<p>Office address: <br>
+			Colombo-7, <br>
+			Srilanka.</p>
+		      
+	</address>
+
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="./assets/js/main.js"></script>
+    
+
+    <script>
+      AOS.init({
+        duration: 1200,
+        once: false,
+      });
+    </script>
+
+</body>
+
+</html>
