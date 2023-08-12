@@ -29,8 +29,7 @@ It seems like you're asking how to include database configuration details along 
    To set up the database for this project, follow these steps:
 
    1. Create a new database in your MariaDB server.
-   2. Edit the database configuration in `config.php` (or use environment variables) to include the appropriate details.
-   3. Import the SQL dump provided in the `sql` folder using the following command:
+   2. Import the SQL dump provided in the `sql` folder using the following command:
 
    ```bash
    mysql -u username -p database_name < sql/dump.sql
